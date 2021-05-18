@@ -149,8 +149,16 @@ func generateDatabaseSecretData(dbcr *kciv1alpha1.Database) (map[string][]byte, 
 		return nil, err
 	}
 
-	dbName := dbcr.Namespace + "-" + dbcr.Name
-	dbUser := dbcr.Namespace + "-" + dbcr.Name
+	dbName := dbcr.Spec.DatabaseName
+	if dbName == "" {
+		dbName = dbcr.Namespace + "-" + dbcr.Name
+	}
+
+	dbUser := dbcr.Spec.UserName
+	if dbUser == "" {
+		dbUser = dbcr.Namespace + "-" + dbcr.Name
+	}
+
 	dbPassword := kci.GeneratePass()
 
 	switch engine {

@@ -197,6 +197,8 @@ spec:
     - pgcrypto
     - uuid-ossp
     - plpgsql
+  database: customdbname # <NAMESPACE>_<DB_INSTANCE_NAME> by default
+  user: customuser # <NAMESPACE>_<DB_INSTANCE_NAME> by default
 ```
 When monitoring is enabled on DbInstance spec, `pg_stat_statements` extension will be enabled.
 If below error occurs during database creation, the module must be loaded by adding pg_stat_statements to shared_preload_libraries in postgresql.conf on the server side.

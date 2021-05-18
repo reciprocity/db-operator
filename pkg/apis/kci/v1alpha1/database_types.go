@@ -18,6 +18,8 @@ type DatabaseSpec struct {
 	DeletionProtected bool           `json:"deletionProtected"`
 	Backup            DatabaseBackup `json:"backup"`
 	Extensions        []string       `json:"extensions,omitempty"`
+	DatabaseName      string         `json:"database,omitempty"`
+	UserName          string         `json:"user,omitempty"`
 }
 
 // DatabaseStatus defines the observed state of Database
